@@ -1,0 +1,919 @@
+@font-face {
+  font-family: "briem_hand_bold";
+  src: url(./fonts/briem_hand/fonts/otf/BriemHand-Bold.otf);
+  font-family: "briem_hand_m";
+  src: url("./fonts/briem_hand/fonts/otf/BriemHand-Medium.otf");
+  font-family: "Bellota-Text";
+  src: url(./fonts/Bellota-Text/BellotaText-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  color: #333;
+  line-height: 1.6;
+}
+
+.container {
+  width: 95%;
+  max-width: 1200%;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+/* Шапка сайта */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 20px 0;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: 800;
+  color: #303f69;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-family: "briem_hand_bold";
+}
+
+.logo i {
+  margin-right: 10px;
+  font-size: 32px;
+}
+
+.nav-li {
+  display: flex;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  padding-top: 2%;
+  padding-right: 5%;
+  font-family: "Bellota-Text";
+}
+
+.nav-menu li {
+  margin-left: -10%;
+  font-family: "Bellota-Text";
+}
+
+.nav-menu a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s;
+  font-family: "Bellota-Text";
+}
+
+.nav-menu a:hover {
+  color: #303f69;
+}
+
+.btn-login {
+  background-color: #303f69;
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 10px 60px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #1a2239;
+}
+
+/* Герой блок */
+.hero {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("./img/main_fon_img.jpg");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  height: 100vh;
+  min-height: 700px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-family: "briem_hand_bold";
+}
+
+.hero p {
+  font-size: 20px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  font-family: "Bellota-Text";
+}
+
+.btn-primary {
+  background-color: #303f6969;
+  color: white;
+  border: 2%;
+  border-color: #f9f9f9bb;
+  padding: 15px 40px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: #303f69;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary i {
+  margin-right: 10px;
+}
+
+/* О приложении блок */
+.about-app {
+  padding: 100px 0;
+  background-color: #f9f9f9;
+}
+
+.about-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-text {
+  flex: 1;
+  padding-right: 50px;
+}
+
+.about-text h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #303f69;
+  font-family: "briem_hand_bold";
+}
+
+.about-text h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  font-family: "Bellota-Text";
+}
+
+.about-text p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #555;
+  font-family: "Bellota-Text";
+}
+
+.about-image {
+  flex: 1;
+}
+
+.about-image img {
+  width: 70%;
+  margin-left: 30%;
+  border-radius: 10px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Возможности блок */
+.features {
+  padding: 100px 0;
+  background-color: white;
+}
+
+.feature-item img {
+  width: 35%;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 36px;
+  margin-bottom: 60px;
+  color: #303f69;
+  font-family: "briem_hand_bold";
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+}
+
+.feature-item {
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #44076c;
+  font-family: "briem_hand_m";
+}
+
+.feature-item p {
+  color: #666;
+  font-size: 16px;
+  font-family: "Bellota-Text";
+}
+
+/* Футер */
+footer {
+  background-color: #222;
+  color: #fff;
+  padding: 60px 0 30px;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.footer-logo {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.footer-about {
+  flex: 1;
+  min-width: 300px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.footer-about p {
+  opacity: 0.8;
+  margin-bottom: 20px;
+  font-family: "Bellota-Text";
+}
+
+.footer-links {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 30px;
+}
+
+.footer-links h3 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: #ddd;
+}
+
+.footer-links ul {
+  list-style: none;
+  font-family: "Bellota-Text";
+}
+
+.footer-links li {
+  margin-bottom: 12px;
+  font-family: "Bellota-Text";
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #303f69;
+}
+
+.footer-contact {
+  flex: 1;
+  min-width: 250px;
+  margin-bottom: 30px;
+  font-family: "Bellota-Text";
+}
+
+.footer-contact h3 {
+  font-size: 20px;
+  margin-bottom: 25px;
+  color: #ddd;
+}
+
+.footer-contact p {
+  margin-bottom: 15px;
+  opacity: 0.8;
+  display: flex;
+  align-items: center;
+}
+
+.footer-contact i {
+  margin-right: 10px;
+  color: #4caf50;
+}
+
+/* Адаптивность */
+@media (max-width: 992px) {
+  .about-content {
+    flex-direction: column;
+  }
+
+  .about-text {
+    padding-right: 0;
+    margin-bottom: 50px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .nav-menu {
+    display: none;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 18px;
+  }
+
+  .btn-primary {
+    padding: 12px 30px;
+    font-size: 16px;
+  }
+
+  .about-text h2,
+  .section-title {
+    font-size: 30px;
+  }
+}
+
+.hero-2 {
+  background: #9eb1c7;
+  text-align: center;
+  padding: 50px 20px;
+  color: #2c3e50;
+}
+
+.hero-2 h1 {
+  margin-top: 10%;
+  font-family: "briem_hand_m";
+  font-size: 3em;
+  margin-bottom: 3%;
+}
+
+.hero-2 p {
+  color: #f1f1f1;
+  font-family: "Bellota-Text";
+}
+
+.search {
+  margin-top: 20px;
+  width: 400px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+}
+
+/* Карточки */
+.cards {
+  margin-top: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 25px;
+}
+
+.desc {
+  color: #777;
+}
+
+.images {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.img {
+  background: #ddd;
+  border-radius: 8px;
+}
+
+.img.big {
+  width: 60%;
+  height: 300px;
+}
+
+.img.small {
+  width: 20%;
+  height: 300px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: #6b8fb3;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Номера */
+.pagination {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.page {
+  padding: 8px 12px;
+  margin: 0 4px;
+  border: none;
+  border-radius: 6px;
+}
+
+.page.active {
+  background: #d0d6dc;
+}
+
+/* Форма */
+#app {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.container-2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("./img/reg_fon_img.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.registration-form {
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  padding: 40px;
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-header h1 {
+  color: #2c3e50;
+  font-size: 28px;
+  margin-bottom: 8px;
+  font-family: "briem_hand_bold";
+}
+
+.form-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 15px;
+  font-family: "Bellota-Text";
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 2px solid #e0e6ed;
+  border-radius: 10px;
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: #f8f9fa;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3498db;
+  box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+  background-color: white;
+}
+
+.form-input.error {
+  border-color: #e74c3c;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.select-wrapper::after {
+  content: "\f078";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #7f8c8d;
+  pointer-events: none;
+}
+
+select.form-input {
+  appearance: none;
+  cursor: pointer;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #7f8c8d;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #303f69;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+  background-color: #1a2239;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+.submit-btn:disabled {
+  background: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 16px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+  border: 1px solid #c3e6cb;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+  .registration-form {
+    padding: 30px 25px;
+    margin: 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .footer-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .registration-form {
+    padding: 25px 20px;
+  }
+
+  .form-header h1 {
+    font-size: 24px;
+  }
+
+  .form-input {
+    padding: 12px 14px;
+  }
+}
+
+.reg-a {
+  text-align: center;
+}
+
+.reg-a a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.btn-primary a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.btn-login a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.submit-btn a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 260px;
+  margin-top: 8%;
+  margin-left: 2%;
+  background: #f7f8fa;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  border-radius: 5px;
+  height: 80%;
+}
+
+.profile {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 70px;
+  height: 70px;
+  background: #e6cfc4;
+  border-radius: 12px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+}
+
+.name {
+  font-weight: bold;
+}
+
+.role {
+  font-size: 14px;
+  color: #777;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.menu-item {
+  background: none;
+  border: none;
+  padding: 10px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.menu-item.active {
+  background: #dce2ea;
+}
+
+/* Content */
+.content-3 {
+  flex: 1;
+  padding: 20px 40px;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.topbar h1 {
+  font-size: 22px;
+}
+
+.top-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.top-menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 14px;
+}
+
+.profile-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  border: none;
+  background: #5b7db1;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Routes */
+.routesh2 {
+  margin-top: 10%;
+  color: #303f69;
+  font-family: "briem_hand_bold";
+}
+
+.routes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  margin-top: -20px;
+}
+
+.route-card {
+  width: calc(33.33% - 20px);
+  box-sizing: border-box;
+  min-width: 250px;
+  margin-top: 5%;
+  background: #fff;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.width_trek {
+  width: 100%;
+}
+
+.route-card .title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.map-placeholder {
+  height: 120px;
+  background: #e5e5e5;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #444;
+}
+
+.open-btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #5b7db1;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+
+.pagination button.active {
+  background-color: #5b7db1;
+  /* Зеленый цвет как в вашем дизайне */
+  color: white;
+  border-color: #5b7db1;
+  font-weight: bold;
+}
+
+.pagination button {
+  cursor: pointer;
+  padding: 8px 16px;
+  margin: 0 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.pagination button:hover:not(.active) {
+  background-color: #f0f0f0;
+}

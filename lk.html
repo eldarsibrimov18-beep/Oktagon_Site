@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Личный кабинет</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="layout">
+      <aside class="sidebar">
+        <div class="profile">
+          <div class="avatar">{{ user.initial }}</div>
+          <div class="name">{{ user.name }}</div>
+          <div class="role">{{ user.role === 'participant' ? 'Путешественник' : 'Гид' }}</div>
+        </div>
+
+        <nav class="menu">
+          <button v-for="item in menu" :key="item" class="menu-item" :class="{ active: item === activeMenu }"
+            @click="activeMenu = item">
+            {{ item }}
+          </button>
+        </nav>
+      </aside>
+
+      <main class="content-3">
+        <header>
+          <div class="container">
+            <div class="header-content">
+              <a href="/" class="logo">
+                <i class="fas fa-route" style="margin-right: 40%"></i>
+                <b>TrekPlan</b>
+              </a>
+
+              <button class="mobile-menu-btn" @click="toggleMobileMenu">
+                <i class="fas fa-bars"></i>
+              </button>
+
+              <ul class="nav-menu">
+                <div class="nav-li">
+                  <li><a href="/scheduler">Планировщик</a></li>
+                  <li><a href="/trek" style="margin-left: 3em">Маршруты</a></li>
+                </div>
+                <button class="btn-login" style="margin-left: 2%; margin-right: -5%; margin-bottom: 5%">
+                  <a href="/" @click.prevent="logout">Маршруты</a>
+                </button>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <section>
+          <h2 class="routesh2">Мои маршруты</h2>
+          <div class="routes">
+
+            <div v-if="routes.length === 0" style="padding: 20px; color: #666;">
+              У вас пока нет активных бронирований. <a href="/trek">Выбрать маршрут</a>.
+            </div>
+
+            <div class="route-card" v-for="route in routes" :key="route.bookingId">
+              <p><strong>Дата:</strong> {{ formatDate(route.date) }}</p>
+              <p class="title">{{ route.title }}</p>
+
+              <div class="map-placeholder"
+                :style="{ backgroundImage: 'url(https://loremflickr.com/600/200/nature?lock=' + route.bookingId + ')', backgroundSize: 'cover' }">
+              </div>
+
+              <div class="info">
+                <span>Время: {{ formatDuration(route.days) }}</span>
+                <span>Протяженность: {{ route.distance }} км</span>
+              </div>
+
+              <button class="open-btn" @click="openRoute(route)">Открыть маршрут</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          user: {
+            name: "Загрузка...",
+            role: "...",
+            initial: "?",
+          },
+          menu: ["Мои маршруты", "Моя группа", "Настройки профиля"],
+          activeMenu: "Мои маршруты",
+          routes: [],
+          mobileMenuActive: false
+        };
+      },
+      methods: {
+        formatDuration(timeStr) {
+          if (!timeStr) return '';
+          if (timeStr.toString().includes(':')) {
+            const parts = timeStr.split(':');
+            const decimal = parseInt(parts[0]) + (parseInt(parts[1]) / 60);
+            return parseFloat(decimal.toFixed(1)) + ' часов';
+          }
+          return timeStr;
+        },
+        formatDate(dateStr) {
+          if (!dateStr) return '';
+          const [year, month, day] = dateStr.split('-');
+          return `${day}.${month}.${year}`;
+        },
+        logout() {
+          document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+          window.location.href = '/trek';
+        },
+        toggleMobileMenu() {
+          this.mobileMenuActive = !this.mobileMenuActive;
+        },
+        openRoute(route) {
+          // route.bookingId имеет вид "standard_5" или "custom_10"
+          const parts = route.bookingId.split('_');
+          const type = parts[0];
+          const id = parts[1];
+
+          // Перенаправляем на планировщик с параметрами
+          window.location.href = `/scheduler?id=${id}&type=${type}`;
+        }
+      },
+      mounted() {
+        fetch('/api/auth-status')
+          .then(res => res.json())
+          .then(data => {
+            if (data.isAuthenticated) {
+              this.user = data.user;
+            } else {
+              window.location.href = "/autorization";
+            }
+          });
+
+        fetch('/api/user-routes')
+          .then(res => {
+            if (!res.ok) throw new Error('Ошибка');
+            return res.json();
+          })
+          .then(data => this.routes = data)
+          .catch(err => {
+            console.error("Ошибка загрузки маршрутов", err);
+            this.routes = []; // Или alert("Нет доступа")
+          });
+      }
+    }).mount("#app");
+  </script>
+</body>
+
+</html>
